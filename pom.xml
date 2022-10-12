@@ -111,53 +111,53 @@
 
     </dependencies>
 
-<!--    <build>-->
-<!--        <plugins>-->
+    <!--    <build>-->
+    <!--        <plugins>-->
 
-<!--            <plugin>&lt;!&ndash;derlemek için&ndash;&gt;-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                <version>3.0.0-M1</version>-->
-<!--                <configuration>-->
-<!--                    &lt;!&ndash;                   XML paralel çalışmada master report için kondu&ndash;&gt;-->
-<!--                    <suiteXmlFiles>-->
-<!--                        <suiteXmlFile>src/test/java/XMLFiles/ParallelTesting_MasterReport.xml</suiteXmlFile>-->
-<!--                    </suiteXmlFiles>-->
+    <!--            <plugin>&lt;!&ndash;derlemek için&ndash;&gt;-->
+    <!--                <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                <artifactId>maven-surefire-plugin</artifactId>-->
+    <!--                <version>3.0.0-M1</version>-->
+    <!--                <configuration>-->
+    <!--                    &lt;!&ndash;                   XML paralel çalışmada master report için kondu&ndash;&gt;-->
+    <!--                    <suiteXmlFiles>-->
+    <!--                        <suiteXmlFile>src/test/java/XMLFiles/ParallelTesting_MasterReport.xml</suiteXmlFile>-->
+    <!--                    </suiteXmlFiles>-->
 
-<!--                    &lt;!&ndash;                    Paralele çalışma yok iken diren runner calssı çalıştırmak aşağıdaki bölüm kullanılır.&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <includes>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                        &lt;!&ndash; for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor   &ndash;&gt;&ndash;&gt;-->
-<!--                    &lt;!&ndash;                        <include>**/_04_TestRunnerSmoke.java</include>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                        &lt;!&ndash;                        <include>**/runners/*TestRunner*.java</include>&ndash;&gt;&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    </includes>&ndash;&gt;-->
-<!--                    <testFailureIgnore>true</testFailureIgnore>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+    <!--                    &lt;!&ndash;                    Paralele çalışma yok iken diren runner calssı çalıştırmak aşağıdaki bölüm kullanılır.&ndash;&gt;-->
+    <!--                    &lt;!&ndash;                    <includes>&ndash;&gt;-->
+    <!--                    &lt;!&ndash;                        &lt;!&ndash; for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor   &ndash;&gt;&ndash;&gt;-->
+    <!--                    &lt;!&ndash;                        <include>**/_04_TestRunnerSmoke.java</include>&ndash;&gt;-->
+    <!--                    &lt;!&ndash;                        &lt;!&ndash;                        <include>**/runners/*TestRunner*.java</include>&ndash;&gt;&ndash;&gt;-->
+    <!--                    &lt;!&ndash;                    </includes>&ndash;&gt;-->
+    <!--                    <testFailureIgnore>true</testFailureIgnore>-->
+    <!--                </configuration>-->
+    <!--            </plugin>-->
 
-<!--            <plugin>-->
-<!--                <groupId>net.masterthought</groupId>-->
-<!--                <artifactId>maven-cucumber-reporting</artifactId>-->
-<!--                <version>2.8.0</version>-->
+    <!--            <plugin>-->
+    <!--                <groupId>net.masterthought</groupId>-->
+    <!--                <artifactId>maven-cucumber-reporting</artifactId>-->
+    <!--                <version>2.8.0</version>-->
 
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>execution</id>-->
-<!--                        <phase>test</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <projectName>Project Name</projectName>-->
-<!--                            <outputDirectory>${project.build.directory}/Report/cucumber-reports</outputDirectory>-->
-<!--                            <cucumberOutput>${project.build.directory}/cucumber/cucumber.json</cucumberOutput>-->
-<!--                            <skippedFails>true</skippedFails>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
+    <!--                <executions>-->
+    <!--                    <execution>-->
+    <!--                        <id>execution</id>-->
+    <!--                        <phase>test</phase>-->
+    <!--                        <goals>-->
+    <!--                            <goal>generate</goal>-->
+    <!--                        </goals>-->
+    <!--                        <configuration>-->
+    <!--                            <projectName>Project Name</projectName>-->
+    <!--                            <outputDirectory>${project.build.directory}/Report/cucumber-reports</outputDirectory>-->
+    <!--                            <cucumberOutput>${project.build.directory}/cucumber/cucumber.json</cucumberOutput>-->
+    <!--                            <skippedFails>true</skippedFails>-->
+    <!--                        </configuration>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
 
-<!--    </build>-->
+    <!--    </build>-->
 
     <build>
         <plugins>
@@ -169,7 +169,7 @@
 
                     <includes>
                         <!-- for  run class or classes  /:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor. Jenkins icin boyle yaptik -->
-                        <include>/_04_TestRunnerSmoke.java</include>
+                        <include>**/_04_TestRunnerSmoke.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
 
@@ -177,5 +177,56 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+
+        <profile>
+            <id>Smoke_yeni</id>
+            <build>
+                <plugins>
+                    <plugin><!--derlemek için-->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.0.0-M1</version>
+                        <configuration>
+
+                            <includes>
+                                <!-- for  run class or classes  /:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor   -->
+                                <include>**/_04_TestRunnerSmoke.java</include>
+                            </includes>
+                            <testFailureIgnore>true</testFailureIgnore>
+
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+        </profile>
+
+
+        <profile>
+            <id>Regression</id>
+            <build>
+                <plugins>
+                    <plugin><!--derlemek için-->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.0.0-M1</version>
+                        <configuration>
+
+                            <includes>
+                                <!-- for  run class or classes  /:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor   -->
+                                <include>**/_06_TestRunnerRegressionWithPlugin.java</include>
+                            </includes>
+                            <testFailureIgnore>true</testFailureIgnore>
+
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+        </profile>
+
+    </profiles>
 
 </project>

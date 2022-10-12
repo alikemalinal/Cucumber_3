@@ -1,6 +1,5 @@
 package Runners;
 
-
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
@@ -8,8 +7,7 @@ import io.cucumber.testng.CucumberOptions;
         tags = "@SmokeTest",
         features = {"src/test/java/FeatureFiles/"},
         glue = {"StepDefinitions"},
-        plugin = {"html:target/cucumber-reports.html"}
-        // plugin = {"pretty", "html:target/site/cucumber-pretty", "json:target/cucumber/cucumber.json"} // master report icin
+        plugin = {"pretty", "html:target/site/cucumber-pretty", "json:target/cucumber/cucumber.json"} // master report icin
 )
 public class _04_TestRunnerSmoke extends AbstractTestNGCucumberTests {
 

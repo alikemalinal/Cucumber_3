@@ -1,2 +1,95 @@
-package JDBC.Day01;public class _02_BeforeAfter {
+package JDBC.Day01;
+
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import java.sql.*;
+
+public class _02_BeforeAfter {
+
+    private static Connection connection;
+
+    private static Statement statement;
+
+    @BeforeTest
+    public void DBconnectionOpen() {
+
+        String url = "jdbc:mysql://db-technostudy.ckr1jisflxpv.us-east-1.rds.amazonaws.com:3306/sakila";
+        String username = "root";
+        String password = "'\"-LhCB'.%k[4S]z";
+
+        try {
+            connection = DriverManager.getConnection(url, username, password);
+            statement = connection.createStatement();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @AfterTest
+    public void DBconnectionClose() {
+
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void test1() throws SQLException {
+
+        ResultSet result = statement.executeQuery("select * from language");
+
+        result.next();
+        String languageName = result.getString("name");
+        System.out.println("languageName = " + languageName);
+
+        result.next();
+        languageName = result.getString("name");
+        System.out.println("languageName = " + languageName);
+
+        result.next();
+        languageName = result.getString("name");
+        System.out.println("languageName = " + languageName);
+    }
+
+    @Test
+    public void test2() throws SQLException {
+
+        ResultSet result = statement.executeQuery("select * from language");
+
+        result.next();
+        String languageName = result.getString(2);
+        System.out.println("languageName = " + languageName);
+
+        result.next();
+        languageName = result.getString(2);
+        System.out.println("languageName = " + languageName);
+
+        result.next();
+        languageName = result.getString(2);
+        System.out.println("languageName = " + languageName);
+
+    }
+
+    @Test
+    public void test3() throws SQLException {
+
+        ResultSet result = statement.executeQuery("select * from language");
+
+        result.next();
+        String languageName = result.getString(2);
+        System.out.println("languageName = " + languageName);
+
+        result.next();
+        languageName = result.getString(2);
+        System.out.println("languageName = " + languageName);
+
+        result.previous(); // bir onceki satira gider
+        languageName = result.getString(2);
+        System.out.println("languageName = " + languageName);
+
+    }
 }

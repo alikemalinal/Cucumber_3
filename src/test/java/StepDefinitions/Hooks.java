@@ -1,7 +1,7 @@
 package StepDefinitions;
 
 import Utilities.DriverClass;
-import com.aventstack.extentreports.service.ExtentTestManager;
+import Utilities.ExcelUtility;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -32,17 +32,18 @@ public class Hooks {
         Date currentDate = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy | HH:mm:ss");
 
+        ExcelUtility.writeExcel("src/test/java/ApachePOI/resource/ScenarioStatus.xlsx", scenario, DriverClass.threadBrowserName.get(), simpleDateFormat.format(currentDate));
+
         if (scenario.isFailed()) {
 
             TakesScreenshot screenshot = (TakesScreenshot) DriverClass.getDriver();
             File scrFile = screenshot.getScreenshotAs(OutputType.FILE);
 
-            //Extend Reporta ekleniyor  EXTEND report olmadığında burası kaldırılmalı !!! yoksa browserlar KAPANMAZ
+            // Extend Reporta ekleniyor  EXTEND report olmadığında burası kaldırılmalı !!! yoksa browserlar KAPANMAZ
             // ExtentTestManager.getTest().addScreenCaptureFromBase64String(getBase64Screenshot());
 
             try {
-                FileUtils.copyFile(scrFile, new File("target/FailedScreenShots/" + scenario.getId() +" " + simpleDateFormat.format(currentDate) + ".png"));
-
+                FileUtils.copyFile(scrFile, new File("target/FailedScreenshots/" + scenario.getName() +" " + simpleDateFormat.format(currentDate) + ".png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

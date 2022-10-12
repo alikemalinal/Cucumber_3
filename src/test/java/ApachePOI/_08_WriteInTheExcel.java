@@ -29,6 +29,7 @@ public class _08_WriteInTheExcel {
         // sıra kaydetmeye geldi, bütün bilgiler hafızada buraya kadar herşey worbook'da
         fileInputStream.close(); // okuma modunu kapattım cunku yazma modunda acmam gerekiyor.
 
+        // Yazma islemini yazma modunda acıp oyle yapıyoruz.
         FileOutputStream outputStream = new FileOutputStream(path);
         workbook.write(outputStream);
         workbook.close(); // hafıza bosaltıldı.

@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class LeftNavigation extends Parent {
 
     public LeftNavigation() {
@@ -44,6 +46,9 @@ public class LeftNavigation extends Parent {
     @FindBy(xpath = "//span[text()='Employees']")
     private WebElement employeesButton;
 
+    @FindBy (xpath = "(//span[text()='States'])")
+    private WebElement states;
+
     WebElement myElement;
 
     public void findAndClick(String strElement) {
@@ -60,6 +65,7 @@ public class LeftNavigation extends Parent {
             case "entranceExamButton2": myElement = entranceExamButton2; break;
             case "humanResourcesButton": myElement = humanResourcesButton; break;
             case "employeesButton": myElement = employeesButton; break;
+            case "states": myElement = states; break;
 
         }
 

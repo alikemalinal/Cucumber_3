@@ -1,9 +1,15 @@
 package Pages;
 
 import Utilities.DriverClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.List;
 
 public class DialogContent extends Parent {
 
@@ -68,6 +74,9 @@ public class DialogContent extends Parent {
     @FindBy(xpath = "(//button[@class='consent-give'])[1]")
     private WebElement acceptCookies;
 
+    @FindBy(xpath = "//tbody/tr/td[2]")
+    public List<WebElement> nameList;
+
     WebElement myElement;
 
     public void findAndSendKeys(String strElement, String value) {
@@ -119,7 +128,10 @@ public class DialogContent extends Parent {
         findAndSendKeys("searchInput", searchText); // aranacak kelimeyi kutucuğa gönder.
         findAndClick("searchButton"); // arama butonuna bas
 
-        waitUntilLoading();
+        // waitUntilLoading();
+
+        WebDriverWait wait=new WebDriverWait(DriverClass.getDriver(), Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("div[fxlayoutalign='center center'][class='control-full']"),"Search"));
 
         findAndClick("deleteButton"); // silme butonuna bas
         findAndClick("deleteDialogButton"); // dialogdaki silme butonuna bas

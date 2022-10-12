@@ -16,15 +16,16 @@ public class _04_ApachePOIGetAllData {
         Workbook workbook = WorkbookFactory.create(fileInputStream);
         Sheet sheet = workbook.getSheet("Sheet1");
 
+        // calısma sayfasındaki toplam satır sayısını veriyor.
         int rowCount = sheet.getPhysicalNumberOfRows();
 
         for (int i = 0; i < rowCount; i++) {
 
-            Row row = sheet.getRow(i);
-            int cellCount = row.getPhysicalNumberOfCells();
+            Row row = sheet.getRow(i); // row(satır) sayısı alındı.
+            int cellCount = row.getPhysicalNumberOfCells(); // bu row'daki toplam cell(hücre) sayısı alındı.
 
-            for (int j = 0; j < cellCount; j++) {
-                Cell cell = row.getCell(j);
+            for (int j = 0; j < cellCount; j++) { // row'daki cell sayısı kadar dönecek.
+                Cell cell = row.getCell(j); // bu row'daki sıradaki cell'i aldım.
 
                 System.out.print(cell + " ");
             }

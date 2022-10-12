@@ -10,15 +10,14 @@ import org.testng.annotations.Parameters;
         tags = "@Regression",
         features = {"src/test/java/FeatureFiles/"},
         glue = {"StepDefinitions"},
-        plugin= {"pretty","html:target/site/cucumber-pretty","json:target/cucumber/cucumber.json"}
+        plugin = {"pretty", "html:target/site/cucumber-pretty", "json:target/cucumber/cucumber.json"}
         // master report için
 )
 public class _08_TestRunnerParallel_MasterReport extends AbstractTestNGCucumberTests {
 
     @BeforeClass(alwaysRun = true) // bazı java versiyon hataları için
     @Parameters("browser")
-    public void beforeClass(String browser)
-    {
+    public void beforeClass(String browser) {
         DriverClass.threadBrowserName.set(browser);
         //burada browser set edilecek
         // bu threade browsername set edildi.

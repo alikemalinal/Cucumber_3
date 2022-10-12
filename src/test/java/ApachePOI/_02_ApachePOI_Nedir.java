@@ -5,7 +5,7 @@ public class _02_ApachePOI_Nedir {
     /**
      *  Interview SORUSU
      * 1- Excelden veri okumasını nasıl yaparsınız ?
-     *    Apache.POI ile yapıyorum.
+     *    ApachePOI ile yapıyorum.
      *
      * 2- ApachePOI nedir ?
      *    Excelden veri okuma aracı, kütüphanesi

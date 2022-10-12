@@ -12,7 +12,7 @@ public class _01_2DArray {
 
         for (int i = 0; i < zoo.length; i++) { // satır sayısını verir.
             for (int j = 0; j < zoo[i].length; j++) { // satır uzunlugunu aldık.
-                System.out.print(zoo[i][0] + " ");
+                System.out.print(zoo[i][j] + " ");
             }
 
             System.out.println();

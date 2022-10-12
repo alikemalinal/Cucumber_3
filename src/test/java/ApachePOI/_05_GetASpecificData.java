@@ -41,17 +41,17 @@ public class _05_GetASpecificData {
             throw new RuntimeException(e);
         }
 
-        Sheet sheet = workbook.getSheetAt(0); // workbook.getSheet("Login")
-        int rowSize = sheet.getPhysicalNumberOfRows();
+        Sheet sheet = workbook.getSheet("Login");
+        int rowCount = sheet.getPhysicalNumberOfRows();
 
-        for (int i = 0; i < rowSize; i++) {
+        for (int i = 0; i < rowCount; i++) {
             Row row = sheet.getRow(i);
             Cell cell = row.getCell(0);
 
             if (searchWord.equalsIgnoreCase(cell.toString())) {
-                int cellSize = row.getPhysicalNumberOfCells();
+                int cellCount = row.getPhysicalNumberOfCells();
 
-                for (int j = 1; j < cellSize; j++) {
+                for (int j = 1; j < cellCount; j++) {
                     value += row.getCell(j) + " ";
                 }
             }
